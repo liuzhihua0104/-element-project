@@ -2,7 +2,13 @@
   <el-container class="home">
     <el-header class="header">
       <div class="left">Vue、Element、Spring Boot权限管理系统开发实战</div>
-      <div class="right">右侧</div>
+      <div class="right">
+        <img :src="require('../assets/images/avatar.jpg')" alt="">
+        <div class="userInfo">
+          <div class="name">欢迎：张悦</div>
+          <div class="date">{{date}}</div>
+        </div>
+      </div>
     </el-header>
     <el-container class="container">
       <el-aside class="aside" width="200px">Aside</el-aside>
@@ -20,7 +26,11 @@
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  data(){
+    return{
+      date:new Date()
+    }
+  },
   components: {},
 };
 </script>
@@ -39,6 +49,19 @@ export default {
     .left {
     }
     .right {
+      display: flex;
+      justify-content: flex-end;
+      img{
+        width:50px;
+        height:50px;
+        border-radius: 50%;
+      }
+
+      .userInfo{
+    
+        .name{}
+        .date{}
+      }
     }
   }
 
