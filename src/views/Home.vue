@@ -33,6 +33,7 @@
           @click="iconClick"          
           :class="[isCollapse ? 'el-icon-s-fold':'el-icon-s-unfold']"
           ></i>
+          <tabs/>
         </el-main>
         <el-footer class="footer" 
           >
@@ -48,6 +49,7 @@
 // @ is an alias to /src
 
 import MenuBar from "../components/MenuBar.vue";
+import Tabs from "../components/Tabs.vue";
 import {mapState} from "vuex"
 
 export default {
@@ -63,6 +65,7 @@ export default {
   },
   components: {
     MenuBar,
+    Tabs
   },
   methods:{
     // 切换折叠
