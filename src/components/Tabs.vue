@@ -19,25 +19,32 @@
 <script>
 export default {
   data() {
-    return {
-      editableTabsValue: "2", // 绑定值，选中选项卡的 name
-      editableTabs: [
-        {
-          title: "Tab 1",
-          name: "1",
-          content: "Tab 1 content",
-        },
-        {
-          title: "Tab 2",
-          name: "2",
-          content: "Tab 2 content",
-        },
-      ],
-      tabIndex: 2,
-    };
+    return {};
+  },
+
+  computed: {
+    editableTabsValue: {
+      // 另外一种方法获取store中的数据
+      get() {
+        return this.$store.state.MenuStore.editableTabsValue;
+      },
+      // 另外一种方法操作store中的数据
+      set(val) {
+        return (this.$store.state.menuStore.editableTabsValue = val);
+      },
+    },
+    editableTabs: {
+      // 另外一种方法获取store中的数据
+      get() {
+        return this.$store.state.MenuStore.editableTabs;
+      },
+      // 另外一种方法操作store中的数据
+      set(val) {
+        return (this.$store.state.menuStore.editableTabs = val);
+      },
+    },
   },
   methods: {
-   
     removeTab(targetName) {
       let tabs = this.editableTabs;
       let activeName = this.editableTabsValue;
