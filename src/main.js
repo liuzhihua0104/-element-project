@@ -7,6 +7,10 @@ import ElementUI from 'element-ui'; //引入element组件库
 import 'element-ui/lib/theme-chalk/index.css'; //引入element样式文件 
 Vue.use(ElementUI); //使用element
 
+//解决菜单收缩时文字影藏不完整的问题
+import Fragment from 'vue-fragment'
+Vue.use(Fragment.Plugin)
+
 Vue.config.productionTip = false
 
 new Vue({

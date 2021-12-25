@@ -24,7 +24,7 @@
       </div>
     </el-header>
     <el-container class="container">
-      <el-aside class="aside" width="200px">
+      <el-aside class="aside" style="width:auto">
            <menu-bar></menu-bar>
       </el-aside>
       <el-container class="content">
@@ -76,7 +76,7 @@ export default {
 .home {
   width: 100%;
   height: 100%;
-  background: yellow;
+  // background: yellow;
   display: flex;
   flex-direction: column;
   .header {
@@ -107,10 +107,10 @@ export default {
   .container {
     flex: 1;
 
-    .alide {
+    .aside {
       width: auto;
       height: 100%;
-      background: red;
+      // background: red;
     }
     .content {
       flex: 1;

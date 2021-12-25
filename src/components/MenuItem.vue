@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <fragment>
     <template v-for="menu in menuList">
       <el-submenu
         v-if="menu.children && menu.children.length > 0"
@@ -19,7 +19,7 @@
         <span slot="title">导航二</span>
       </el-menu-item>
     </template>
-  </div>
+  </fragment>
 </template>
 
 <script>
