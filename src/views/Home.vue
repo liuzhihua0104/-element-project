@@ -28,7 +28,9 @@
            <menu-bar></menu-bar>
       </el-aside>
       <el-container class="content">
-        <el-main class="main">Main</el-main>
+        <el-main class="main">
+          <i  class="arrow-icon el-icon-s-fold" ></i>
+        </el-main>
         <el-footer class="footer"
           >Copyright © 2020 - 2021 . 秘咖学堂.All Rights Reserved</el-footer
         >
@@ -99,6 +101,8 @@ export default {
       display: flex;
       .main {
         flex: 1;
+        padding:0;
+        margin:0;
       }
       .footer {
         height: 50px;
@@ -106,5 +110,16 @@ export default {
       }
     }
   }
+}
+
+.arrow-icon {
+  float: left;
+  background: #eaedf1;
+  border: 1px solid transparent;
+  font-size: 23px;
+  height: 39px;
+  line-height: 39px !important;
+  width: 40px;
+  text-align: center;
 }
 </style>
