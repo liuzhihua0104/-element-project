@@ -6,10 +6,26 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
-    component: ()=>import("../views/Home.vue")
+    component: () => import("../views/Home.vue"),
+    children: [
+      {
+        path: '/goodCategory',
+        name: 'goodCategory',
+        component: () => import("@/views/goods/goodsCategory/goodsCategoryList.vue"),
+
+      },
+      {
+        path: '/goodsBrand',
+        name: 'goodsBrand',
+        component: () => import("@/views/goods/goodsBrand/goodsBrandList"),
+      }
+
+    ]
+
   },
+
   // {
   //   path: '/about',
   //   name: 'About',

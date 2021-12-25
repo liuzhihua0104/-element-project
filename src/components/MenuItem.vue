@@ -8,13 +8,19 @@
       >
         <template slot="title">
           <i :class="menu.icon"></i>
-          <span style="font-size:15px;font-weight:600;" slot="title">{{ menu.label }}</span>
+          <span style="font-size: 15px; font-weight: 600" slot="title">{{
+            menu.label
+          }}</span>
         </template>
 
         <menu-item :menuList="menu.children"></menu-item>
- 
       </el-submenu>
-      <el-menu-item v-else :index="menu.path" :key="menu.path">
+      <el-menu-item
+        @click="clickMenu(menu)"
+        v-else
+        :index="menu.path"
+        :key="menu.path"
+      >
         <i :class="menu.icon"></i>
         <span slot="title">导航二</span>
       </el-menu-item>
@@ -32,6 +38,12 @@ export default {
   props: ["menuList"],
   components: {
     MenuItem,
+  },
+  methods: {
+    // 把当前点中的菜单节点放到tabs
+    clickMenu(menu) {
+      this.$store.commit("clickMenu",menu);
+    },
   },
 };
 </script>

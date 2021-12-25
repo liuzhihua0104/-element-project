@@ -33,7 +33,9 @@
           @click="iconClick"          
           :class="[isCollapse ? 'el-icon-s-fold':'el-icon-s-unfold']"
           ></i>
-          <tabs/>
+          <tabs />
+
+          <router-view></router-view>
         </el-main>
         <el-footer class="footer" 
           >

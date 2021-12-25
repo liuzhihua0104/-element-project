@@ -179,26 +179,34 @@ export default {
                 updateTime: 1586684441000,
             },
         ],
-        editableTabsValue: "1", // 绑定值，选中选项卡的 name
-        editableTabs: [
-            {
-                title: "Tab 1",
-                name: "1",
-                content: "Tab 1 content",
-            },
-            {
-                title: "Tab 2",
-                name: "2",
-                content: "Tab 2 content",
-            },
-        ]
+        editableTabsValue: "", // 绑定值，选中选项卡的 name
+        editableTabs: []
     },
     mutations: {
 
         // 切换折叠与展开
         setOpenOrClose(state) {
             state.isCollapse = !state.isCollapse
+        },
+
+        clickMenu(state, val) {
+            //1.判断当前点中菜单是否在tabs里面
+            let res = state.editableTabs.findIndex(item => item.name === val.name)
+            //2.如果不存在，组织tabs数据，存放到editableTabs
+            if (res === -1) {
+                let tab = {};
+                tab.title = val.label;
+                tab.name = val.name;
+                state.editableTabs.push(tab);
+            }
+            //3.设置当前选中的选项卡
+            state.editableTabsValue = val.name;
+            //4.把选中的选项卡存放到sessionStorage里面
+            sessionStorage.setItem('tabsList', JSON.stringify(state.editableTabs))
+
         }
+
+
     },
     actions: {
     },

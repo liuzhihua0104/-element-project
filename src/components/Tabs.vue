@@ -30,7 +30,7 @@ export default {
       },
       // 另外一种方法操作store中的数据
       set(val) {
-        return (this.$store.state.menuStore.editableTabsValue = val);
+        this.$store.state.menuStore.editableTabsValue = val;
       },
     },
     editableTabs: {
@@ -40,9 +40,10 @@ export default {
       },
       // 另外一种方法操作store中的数据
       set(val) {
-        return (this.$store.state.menuStore.editableTabs = val);
+        this.$store.state.menuStore.editableTabs = val;
       },
     },
+
   },
   methods: {
     removeTab(targetName) {
