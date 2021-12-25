@@ -12,11 +12,13 @@
 
 <script>
 import MenuItem from "./MenuItem.vue";
+
+import { mapState } from "vuex";
+
 export default {
   data() {
     return {
       name: "MenuBar",
-      isCollapse: false,
       menuList: [
         {
           children: [
@@ -196,6 +198,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapState({
+      isCollapse: (state) => state.MenuStore.isCollapse,
+    }),
   },
   components: { MenuItem },
   methods: {

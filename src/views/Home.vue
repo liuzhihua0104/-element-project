@@ -30,12 +30,14 @@
       <el-container class="content">
         <el-main class="main">
           <i  class="arrow-icon" 
-          
+          @click="iconClick"          
           :class="[isCollapse ? 'el-icon-s-fold':'el-icon-s-unfold']"
           ></i>
         </el-main>
         <el-footer class="footer" 
-          >Copyright © 2020 - 2021 . 秘咖学堂.All Rights Reserved</el-footer
+          >
+          {{isCollapse}}
+          Copyright © 2020 - 2021 . 秘咖学堂.All Rights Reserved</el-footer
         >
       </el-container>
     </el-container>
@@ -56,12 +58,18 @@ export default {
   },
   computed:{
     ...mapState({
-      isCollapse:(state)=>state.menuStore.isCollapse
+      isCollapse:(state)=>state.MenuStore.isCollapse
     })
   },
   components: {
     MenuBar,
   },
+  methods:{
+    // 切换折叠
+    iconClick(){
+      this.$store.commit("setOpenOrClose")
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
