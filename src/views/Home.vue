@@ -29,9 +29,12 @@
       </el-aside>
       <el-container class="content">
         <el-main class="main">
-          <i  class="arrow-icon el-icon-s-fold" ></i>
+          <i  class="arrow-icon" 
+          
+          :class="[isCollapse ? 'el-icon-s-fold':'el-icon-s-unfold']"
+          ></i>
         </el-main>
-        <el-footer class="footer"
+        <el-footer class="footer" 
           >Copyright © 2020 - 2021 . 秘咖学堂.All Rights Reserved</el-footer
         >
       </el-container>
@@ -43,12 +46,18 @@
 // @ is an alias to /src
 
 import MenuBar from "../components/MenuBar.vue";
+import {mapState} from "vuex"
 
 export default {
   data() {
     return {
       date: new Date(),
     };
+  },
+  computed:{
+    ...mapState({
+      isCollapse:(state)=>state.menuStore.isCollapse
+    })
   },
   components: {
     MenuBar,
