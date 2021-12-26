@@ -4,6 +4,7 @@
     type="card"
     closable
     @tab-remove="removeTab"
+     @tab-click="tabClick"
   >
     <el-tab-pane
       v-for="item in editableTabs"
@@ -18,35 +19,39 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
-
   computed: {
     editableTabsValue: {
-      // 另外一种方法获取store中的数据
       get() {
         return this.$store.state.MenuStore.editableTabsValue;
       },
-      // 另外一种方法操作store中的数据
       set(val) {
-        this.$store.state.menuStore.editableTabsValue = val;
+        this.$store.state.MenuStore.editableTabsValue = val;
       },
     },
     editableTabs: {
-      // 另外一种方法获取store中的数据
       get() {
         return this.$store.state.MenuStore.editableTabs;
       },
-      // 另外一种方法操作store中的数据
       set(val) {
-        this.$store.state.menuStore.editableTabs = val;
+        this.$store.state.MenuStore.editableTabs = val;
       },
     },
-
+  },
+  data() {
+    return {};
   },
   methods: {
+    tabClick(tab){
+      let obj = {};
+      obj.title = tab.label;
+      obj.name = tab.name;
+      this.$store.commit('clickMenu',obj);
+      this.$router.push({name:tab.name})
+    },
     removeTab(targetName) {
+      if (targetName === "desktop") {
+        return;
+      }
       let tabs = this.editableTabs;
       let activeName = this.editableTabsValue;
       if (activeName === targetName) {
@@ -62,10 +67,19 @@ export default {
 
       this.editableTabsValue = activeName;
       this.editableTabs = tabs.filter((tab) => tab.name !== targetName);
+      //设置当前激活的选项卡
+      this.$store.commit('setActiveTabs',this.editableTabsValue)
+      //激活的选项卡存储到sessionStorage里面
+      sessionStorage.setItem('tabsList',JSON.stringify(this.editableTabs))
+      //跳转到路由
+      this.$router.push({name:this.editableTabsValue})
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+::v-deep .el-tabs__header{
+  margin: 0px;
+}
 </style>

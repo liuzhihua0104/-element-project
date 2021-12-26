@@ -22,7 +22,7 @@
         :key="menu.path"
       >
         <i :class="menu.icon"></i>
-        <span slot="title">导航二</span>
+        <span slot="title">{{menu.label}}</span>
       </el-menu-item>
     </template>
   </fragment>
@@ -43,6 +43,7 @@ export default {
     // 把当前点中的菜单节点放到tabs
     clickMenu(menu) {
       this.$store.commit("clickMenu",menu);
+      this.$router.push({name:menu.name})
     },
   },
 };
