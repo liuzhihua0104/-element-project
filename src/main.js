@@ -13,6 +13,18 @@ Vue.use(Fragment.Plugin)
 
 Vue.config.productionTip = false
 
+router.beforeEach((to,from,next)=>{
+  // 获取tabs列表
+store.commit("getTabs")
+// 设置tab
+store.commit("setActiveTabs",to.name)
+
+
+ 
+
+next()
+})
+
 new Vue({
   router,
   store,

@@ -6,6 +6,10 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',   //根路径
+    redirect: '/login'   //重定向url地址
+  },
+  {
     path: '/login',
     name: 'login',
     // route level code-splitting
@@ -19,6 +23,16 @@ const routes = [
     // component: () => import("../views/Home.vue"),
     component: Home,
     children: [
+      {
+        path: '/home',   //根路径
+        redirect: '/desktop'   //重定向url地址
+      },
+      {
+        path: '/desktop',
+        name: 'desktop',
+        component: () => import("@/views/Desktop.vue"),
+
+      },
       {
         path: '/goodCategory',
         name: 'goodCategory',
@@ -35,24 +49,24 @@ const routes = [
         name: 'departmentList',
         component: () => import("@/views/system/Department/DepartmentList"),
       }
-      ,  {
+      , {
         path: '/userList',
         name: 'userList',
         component: () => import("@/views/system/User/UserList"),
       }
-      ,  {
+      , {
         path: '/roleList',
         name: 'roleList',
         component: () => import("@/views/system/Role/RoleList"),
-      },  {
+      }, {
         path: '/menuList',
         name: 'menuList',
         component: () => import("@/views/system/Menu/MenuList"),
-      },  {
+      }, {
         path: '/systemCode',
         name: 'systemCode',
         component: () => import("@/views/system/config/code"),
-      },  {
+      }, {
         path: '/document',
         name: 'document',
         component: () => import("@/views/system/config/systemDocument"),
@@ -61,7 +75,7 @@ const routes = [
     ]
 
   },
- 
+
 ]
 
 const router = new VueRouter({

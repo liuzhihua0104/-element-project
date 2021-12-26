@@ -179,14 +179,28 @@ export default {
                 updateTime: 1586684441000,
             },
         ],
-        editableTabsValue: "", // 绑定值，选中选项卡的 name
-        editableTabs: []
+        editableTabsValue: "desktop", // 绑定值，选中选项卡的 name
+        editableTabs: [{
+            title: '首页',
+            name: 'desktop'
+        }]
     },
     mutations: {
-
+        //获取tabs
+        getTabs(state) {
+            let tabs = sessionStorage.getItem('tabsList')
+            if (tabs) {
+                state.editableTabs = JSON.parse(tabs)
+            }
+        },
         // 切换折叠与展开
         setOpenOrClose(state) {
             state.isCollapse = !state.isCollapse
+        },
+
+        //设置当前激活的选项卡
+        setActiveTabs(state, val) {
+            state.editableTabsValue = val;
         },
 
         clickMenu(state, val) {
