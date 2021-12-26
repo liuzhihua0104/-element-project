@@ -57,6 +57,7 @@
 
 <script>
 import { login } from "../api/login";
+import Cookies from "js-cookie";
 export default {
   data() {
     return {
@@ -102,6 +103,12 @@ export default {
           // alert("submit!");
           let res=await login(this.loginForm)
           console.log(res);
+
+          if(res.data.code==200){
+            let datas=res.data.data;
+            console.log(datas)
+            Cookies.set("token",datas.token)
+          }
           
         } else {
           console.log("error submit!!");
