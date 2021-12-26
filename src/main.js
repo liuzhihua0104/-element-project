@@ -11,19 +11,22 @@ Vue.use(ElementUI); //使用element
 import Fragment from 'vue-fragment'
 Vue.use(Fragment.Plugin)
 
+import MessageUtils from '../src/utils/MessageUtils'
+Vue.prototype.$message = MessageUtils
+
 Vue.config.productionTip = false
 
 router.beforeEach((to,from,next)=>{
   // 获取tabs列表
 store.commit("getTabs")
 // 设置tab
-store.commit("setActiveTabs",to.name)
-
-
- 
+store.commit("setActiveTabs",to.name) 
 
 next()
 })
+
+
+
 
 new Vue({
   router,
