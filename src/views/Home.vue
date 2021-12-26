@@ -144,4 +144,9 @@ export default {
   width: 40px;
   text-align: center;
 }
+
+// 解决菜单无法折叠的问题
+.el-main /deep/ .el-tabs__header{
+  position: static;
+}
 </style>
