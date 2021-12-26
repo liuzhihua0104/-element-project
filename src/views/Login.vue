@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import { login } from "../api/login";
 export default {
   data() {
     return {
@@ -95,10 +96,13 @@ export default {
     getImage() {},
 
     commitBtn() {
-      this.$refs["loginForm"].validate((valid) => {
+      this.$refs["loginForm"].validate(async (valid) => {
           console.log(valid)
         if (valid) {
-          alert("submit!");
+          // alert("submit!");
+          let res=await login(this.loginForm)
+          console.log(res);
+          
         } else {
           console.log("error submit!!");
           return false;

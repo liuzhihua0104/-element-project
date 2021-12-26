@@ -11,6 +11,10 @@ Vue.use(ElementUI); //使用element
 import Fragment from 'vue-fragment'
 Vue.use(Fragment.Plugin)
 
+
+// 引入mockjs
+import "./mock/index.js"
+
 import MessageUtils from '../src/utils/MessageUtils'
 Vue.prototype.$message = MessageUtils
 
